@@ -1,0 +1,44 @@
+fakedataset.csv is a fake dataset that was made with random mutation as well as fitness made up randomly with a random sequence (random_seq.fasta)
+
+to check if the sequence corresponds to the dataset use seq_checker_V2.py, write in the cmd where the files and the scripts are:
+
+python seq_checker_V2.py fakedataset.csv -f random_seq.fasta -aa 4 -pos 5 -j 1
+
+	-h : help to use the script
+	-f : the fasta sequence to use as reference
+	-aa : the column where to find the original amino acid (first column = 0)
+	-pos : column where to find the position in the sequence (first column = 0)
+	-j : number of lines to be jumped in the file to reach actual data
+
+
+to make new file with the mutated sequence use dataseq_melting.py, write in the cmd where the files and the scripts are:
+
+python dataseq_melting.py fakedataset.csv -f random_seq.fasta -m 0
+
+	-h : help to use the script
+	-f : the fasta sequence to use as reference
+	-m : column where to find the mutation in the right format (aaposaa)(first column = 0)
+
+the output is a new csv file with the sequences
+
+to make files needed for InnovSAR use Data_treatment.py, write in the cmd where the files and the scripts are:
+
+python Data_treatment.py fakedataset_seq.csv -m 0 -f 1 -ff random_seq.fasta
+
+	-h : help to use the script
+	-ff : the fasta sequence to use as reference
+	-m : column where to find mutation in csv file (first column = 0)
+	-f : column where to find fitness in csv file (first column = 0)
+
+to cut an xlsx file into multiple csv file (based on the sheets) use dataset_sep.py, write in the cmd where the files and the scripts are:
+
+python dataset_sep.py dataset_to_be_used.xlsx
+
+	dataset_to_be_used.xlsx : any xlsx file with multiple sheets
+
+it will write n csv files with n being the number of sheets in the xlsx file, the openpyxl library must be installed to work
+you may install with:
+conda install openpyxl, if you have conda
+pip install openpyxl
+
+
